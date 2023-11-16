@@ -1,3 +1,5 @@
+{/*This page returns each of the links when the hamburger icon is opened*/}
+
 import React from 'react'
 import NavLink from "./NavLink";
 

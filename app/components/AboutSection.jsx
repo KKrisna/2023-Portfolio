@@ -1,12 +1,62 @@
 "use client";
 
+{/*This is the About Me section*/}
+
 import React, { useTransition, useState } from 'react';
 import Image from 'next/image';
+import TabButton from "./TabButton";
+
+//array that contains the content of each tab
+const TAB_DATA = [
+    {
+        title: "Skills",
+        id: "skills",
+        content: (
+            <ul className="list-disc pl-2">
+                <li>Java</li>
+                <li>Kotlin</li>
+                <li>Python</li>
+                <li>C++</li>
+                <li>SQL</li>
+                <li>HTML/CSS</li>
+                <li>Android Studio</li>              
+            </ul>
+        )
+    },
+
+    {
+        title: "Education",
+        id: "education",
+        content: (
+            <ul className="list-disc pl-2">
+                <li>California State University, Long Beach</li>
+            </ul>
+        )
+    },
+
+    {
+        title: "Hobbies",
+        id: "hobbies",
+        content: (
+            <ul className="list-disc pl-2">
+                <li>Wrench on my Personal Cars</li>
+                <li>Attend Car Shows</li>
+                <li>Photography</li>
+                <li>Play Computer Games</li>
+                <li>Visit Theme Parks</li>
+            </ul>
+        )
+    }
+]
+
 
 const AboutSection = () => {
-    const [tab, stateTab] = useState("Skills");
-    const [startTransition, isPending] = useTransition();
 
+    //sets tab to skills section first
+    const [tab, setTab] = useState("skills");
+    const [isPending, startTransition] = useTransition();
+
+    //keeps track of current clicked on tab
     const handleTabChange = (id) => {
         startTransition(() => {
             setTab(id);
@@ -16,9 +66,14 @@ const AboutSection = () => {
     return (
         <section className="text-white">
             <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
+
+                {/*Portrait of myself*/}
                 <Image src="/images/portrait.jpeg" width={400} height={400} />
-                <div>
+                <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
+                    {/*About Me Title*/}
                     <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
+
+                    {/*Introduction paragraph*/}
                     <p className="text-base lg:text-lg">My name is Krisna Kieng and I recently just graduated from CSULB majoring in computer science. I am currently
                         open to work searching for roles as a software developer or as a support engineer. I live in Long Beach  
                         and I am open to commuting or working remotely. As a past time, I am a huge car enthusiast 
@@ -29,10 +84,16 @@ const AboutSection = () => {
                         This also builds on focusing on details because so much thought goes into taking amazing photos and showcasing certains details. 
                     </p>
 
-                    <div className="flex flex-row mt-8">
-                        <span className="mr-3 font-semibold hover:text-white text-[#ADB7BE] border-b border-green-500">Skills</span>
-                        <span>Education</span>
-                        <span>Hobbies</span>
+                    {/*The different tab options*/}
+                    <div className="flex flex-row justify-start mt-8">
+                        <TabButton selectTab={() => handleTabChange("skills")} active={tab === "skills"}>Skills</TabButton>
+                        <TabButton selectTab={() => handleTabChange("education")} active={tab === "education"}>Education</TabButton>
+                        <TabButton selectTab={() => handleTabChange("hobbies")} active={tab === "hobbies"}>Hobbies</TabButton>
+                    </div>
+
+                    {/*Finds the content to the matching tab*/}
+                    <div className="mt-8">
+                        {TAB_DATA.find((t) => t.id === tab).content}
                     </div>
                 </div>
             </div>
@@ -40,4 +101,4 @@ const AboutSection = () => {
     )
 }
 
-export default AboutSection
+export default AboutSection;

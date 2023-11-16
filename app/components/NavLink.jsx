@@ -1,3 +1,5 @@
+{/*This is the NavLinks page that returns the different links in the navigation bar*/}
+
 import Link from "next/link";
 
 const NavLink = ({href, title}) => {
