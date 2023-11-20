@@ -19,11 +19,11 @@ const HeroSection = () => {
                             // Same substring at the start will only be typed out once, initially
                             'Krisna Kieng',
                             1000, // wait 1s before replacing
-                            'Web Developer',
+                            'a Web Developer',
                             1000,
-                            'Mobile Developer',
+                            'a Mobile Developer',
                             1000,
-                            'Automotive Enthusiast',
+                            'an Automotive Enthusiast',
                             1000
                         ]}
                         wrapper="span"
@@ -49,7 +49,7 @@ const HeroSection = () => {
             <div className="col-span-5 place-self-center mt-4 lg:mt-0">
                 <div className="rounded-full bg-[#181818] w-[275px] h-[275px] lg:w-[305px] lg:h-[305px] relative">
                     <Image
-                    src="/images/hero_photo.png"
+                    src="./images/hero_photo.png"
                     alt="hero image"
                     className="absolute transform -translate-x-1/2 -transalte-y-1/2 top-1/5 left-1/2"
                     width={150}

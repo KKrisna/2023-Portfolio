@@ -68,7 +68,7 @@ const AboutSection = () => {
             <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
 
                 {/*Portrait of myself*/}
-                <Image src="/images/portrait.jpeg" width={400} height={400} />
+                <Image src="./images/portrait.jpeg" width={400} height={400} />
                 <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
                     {/*About Me Title*/}
                     <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
